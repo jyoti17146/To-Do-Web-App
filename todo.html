@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 To-Do Web App</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+
+    <!-- Animated background canvas -->
+    <canvas id="bgCanvas"></canvas>
+    <div class="planet"></div>
+
+    <!-- Main UI -->
+    <div class="container">
+        <h1 class="neon-title">TO-DO WEB APP</h1>
+
+        <div class="input-area">
+            <input type="text" id="taskInput" placeholder="Enter a new task...">
+            <button onclick="addTask()">Add</button>
+        </div>
+
+        <div class="sections">
+            <div class="box">
+                <h2>Pending Tasks</h2>
+                <ul id="pendingList"></ul>
+            </div>
+
+            <div class="box">
+                <h2>Completed Tasks</h2>
+                <ul id="completedList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="todo.js"></script>
+</body>
+</html>

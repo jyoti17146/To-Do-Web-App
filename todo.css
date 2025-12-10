@@ -1,0 +1,281 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden; /* hide scroll to keep background clean */
+}
+
+/* ===== Animated background ===== */
+
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    background: radial-gradient(circle at top, #1e2a78 0%, #050816 55%, #01020a 100%);
+}
+
+/* Planet at the bottom */
+.planet {
+    position: fixed;
+    left: 50%;
+    bottom: -40vh;
+    transform: translateX(-50%);
+    width: 120vw;
+    height: 80vh;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 10%, #53fffb 0%, #00b4ff 25%, #0040ff 55%, #02020a 100%);
+    filter: blur(1px);
+    box-shadow:
+        0 -10px 60px rgba(0, 196, 255, 0.8),
+        0 -5px 30px rgba(0, 255, 191, 0.5);
+    z-index: -1;
+}
+
+/* ===== Main container ===== */
+
+.container {
+    position: relative;
+    width: 95%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px 25px 30px 25px;
+    border-radius: 22px;
+    background: rgba(5, 10, 25, 0.7);
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(0, 255, 170, 0.15);
+    color: #fdfdfd;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Neon heading */
+
+.neon-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    letter-spacing: 0.18em;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #fff27a, #ffe13a, #fff6a1, #ffe13a);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 0 6px rgba(255, 255, 140, 0.8),
+        0 0 15px rgba(255, 255, 140, 0.8),
+        0 0 30px rgba(255, 255, 0, 0.9);
+    animation: hueShift 6s linear infinite, glowPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes hueShift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { text-shadow:
+        0 0 6px rgba(255, 255, 180, 0.7),
+        0 0 16px rgba(255, 255, 140, 0.8),
+        0 0 32px rgba(255, 255, 40, 0.9); }
+    50% { text-shadow:
+        0 0 3px rgba(255, 255, 160, 0.4),
+        0 0 10px rgba(255, 255, 120, 0.7),
+        0 0 24px rgba(255, 255, 0, 0.8); }
+}
+
+/* Input area */
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(6, 14, 32, 0.9);
+    outline: none;
+    color: #ffffff;
+    font-size: 0.98rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.6) inset;
+}
+
+.input-area input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.input-area button {
+    padding: 12px 24px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: linear-gradient(120deg, #00ffbf, #00e0ff);
+    box-shadow:
+        0 0 10px rgba(0, 255, 191, 0.7),
+        0 0 24px rgba(0, 208, 255, 0.5);
+    color: #020413;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.input-area button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+        0 0 16px rgba(0, 255, 191, 0.8),
+        0 0 32px rgba(0, 208, 255, 0.7);
+    filter: brightness(1.1);
+}
+
+.input-area button:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* Sections */
+
+.sections {
+    display: flex;
+    gap: 18px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.box {
+    flex: 1 1 280px;
+    background: linear-gradient(145deg, rgba(16, 32, 68, 0.8), rgba(3, 10, 30, 0.9));
+    border-radius: 18px;
+    padding: 14px 14px 10px 14px;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+/* custom scrollbar */
+.box::-webkit-scrollbar {
+    width: 6px;
+}
+.box::-webkit-scrollbar-track {
+    background: transparent;
+}
+.box::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 191, 0.6);
+    border-radius: 10px;
+}
+
+.box h2 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: #b9f4ff;
+}
+
+/* List items */
+
+ul {
+    list-style: none;
+}
+
+li {
+    background: rgba(5, 9, 25, 0.9);
+    border-radius: 12px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeIn 0.3s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.task-text {
+    max-width: 70%;
+}
+
+.task-text b {
+    font-size: 0.98rem;
+}
+
+.task-text small {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.75rem;
+    color: rgba(214, 233, 255, 0.8);
+}
+
+/* Buttons inside task */
+
+.action-btns button {
+    margin-left: 6px;
+    border: none;
+    padding: 6px 9px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.action-btns button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}
+
+.complete-btn {
+    background: rgba(0, 255, 170, 0.2);
+    border: 1px solid rgba(0, 255, 170, 0.7);
+    box-shadow: 0 0 10px rgba(0, 255, 170, 0.4);
+    color: #8fffe0;
+}
+
+.edit-btn {
+    background: rgba(255, 210, 0, 0.1);
+    border: 1px solid rgba(255, 210, 0, 0.7);
+    box-shadow: 0 0 10px rgba(255, 210, 0, 0.4);
+    color: #ffe889;
+}
+
+.delete-btn {
+    background: rgba(255, 77, 77, 0.15);
+    border: 1px solid rgba(255, 77, 77, 0.7);
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.55);
+    color: #ffb3b3;
+}
+
+/* Completed tasks style tweak */
+.completed-item b {
+    text-decoration: line-through;
+    color: #9ad0ff;
+}
+
+/* Responsive tweaks */
+
+@media (max-width: 640px) {
+    .container {
+        margin: 20px auto;
+        padding: 18px;
+    }
+
+    .sections {
+        flex-direction: column;
+    }
+}
