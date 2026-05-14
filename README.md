@@ -5,7 +5,7 @@ A streamlined productivity application designed to simplify daily task organizat
 ## Features
 
 - Add and delete tasks
-- Mark tasks as completed
+- Mark tasks as completed 
 - Clean and responsive UI
 - Interactive user experience
 - Simple task management system
